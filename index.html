@@ -9,6 +9,10 @@
   <title>Salma El Farouki | Infrastructure & Cybersécurité</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     :root{
       --pink:#e91e63;
       --pink-dark:#ad1457;
@@ -47,7 +51,7 @@
       color:var(--pink-dark);
     }
     section{padding:100px 8%}
-    .hero{min-height:100vh;display:flex;align-items:center}
+    .hero{min-height:100vh;display:flex;align-items:center;opacity:0;animation:fadeIn 1s forwards}
     .hero h1{font-size:48px}
     .hero h1 span{color:var(--pink)}
     body.light-mode .hero h1 span{
@@ -178,6 +182,8 @@
       transition: all 0.3s ease;
       color: white;
       font-size: 20px;
+      border: none;
+      outline: none;
     }
     
     body.light-mode .theme-toggle{
@@ -239,6 +245,10 @@
       padding: 25px;
       border-radius: 16px;
       transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+      animation-play-state: paused;
     }
     
     body.light-mode .project-card{
@@ -404,6 +414,57 @@
       font-size: 1rem;
     }
     
+    /* Footer Social Links */
+    .social-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .social-link:hover {
+      background: var(--pink);
+      transform: translateY(-3px);
+    }
+    
+    body.light-mode .social-link:hover {
+      background: var(--pink-dark);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Adjust project card animation delay */
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    /* Mobile responsiveness */
     @media (max-width: 768px) {
       .contact-grid {
         grid-template-columns: 1fr;
@@ -420,6 +481,26 @@
       .project-actions {
         justify-content: center;
       }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      /* Larger skill icons on mobile */
+      .skill-icon {
+        width: 52px;
+        height: 52px;
+      }
+      
+      .skill-icon img {
+        width: 46px;
+        height: 46px;
+      }
+      
+      .skill-icon img[style] {
+        width: 48px !important;
+        height: 48px !important;
+      }
     }
   </style>
 </head>
@@ -435,7 +516,7 @@
     <a href="#projects">Projets</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+  <button class="theme-toggle" aria-label="Changer le thème" onclick="toggleTheme()">🌙</button>
 </header>
 
 <section class="hero" id="about">
@@ -467,7 +548,7 @@
   <div class="certifications-grid">
     <div class="cert-card">
       <a href="https://www.credly.com/badges/010db3ff-b66f-490a-90f6-52b0dd6c163f" target="_blank" aria-label="Badge CyberOps Associate - Cisco">
-        <img class="cert-badge" src="https://img.shields.io/badge/CyberOps%20Associate-Cisco-blue?logo=cisco&logoColor=white" alt="Badge CyberOps Associate Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/CyberOps%20Associate-Cisco-blue?logo=cisco&logoColor=white" alt="Badge officiel Cisco CyberOps Associate">
       </a>
       <div class="cert-title">CyberOps Associate</div>
       <div class="cert-date">nov. 2025</div>
@@ -476,7 +557,7 @@
 
     <div class="cert-card">
       <a href="https://www.credly.com/badges/b3a08004-18b8-4c4d-a4a0-f64f22bb2106" target="_blank" aria-label="Badge DevNet Associate - Cisco">
-        <img class="cert-badge" src="https://img.shields.io/badge/DevNet%20Associate-Cisco-red?logo=cisco&logoColor=white" alt="Badge DevNet Associate Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/DevNet%20Associate-Cisco-red?logo=cisco&logoColor=white" alt="Badge officiel Cisco DevNet Associate">
       </a>
       <div class="cert-title">DevNet Associate</div>
       <div class="cert-date">nov. 2025</div>
@@ -485,7 +566,7 @@
 
     <div class="cert-card">
       <a href="https://www.credly.com/badges/4667c5b5-7cca-42c4-8b4b-9f24372d5079" target="_blank" aria-label="Badge CCNA Introduction to Networks - Cisco">
-        <img class="cert-badge" src="https://img.shields.io/badge/CCNA%3A%20Intro%20to%20Networks-Cisco-yellow?logo=cisco&logoColor=black" alt="Badge CCNA Introduction to Networks Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/CCNA%3A%20Intro%20to%20Networks-Cisco-yellow?logo=cisco&logoColor=black" alt="Badge officiel Cisco CCNA Introduction to Networks">
       </a>
       <div class="cert-title">CCNA: Introduction to Networks</div>
       <div class="cert-date">sept. 2025</div>
@@ -494,7 +575,7 @@
 
     <div class="cert-card">
       <a href="https://www.credly.com/badges/ea1cfceb-797a-4db5-ba79-675abce21fdf" target="_blank" aria-label="Badge Introduction to Cybersecurity - Cisco">
-        <img class="cert-badge" src="https://img.shields.io/badge/Introduction%20to%20Cybersecurity-Cisco-green?logo=cisco&logoColor=white" alt="Badge Introduction to Cybersecurity Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/Introduction%20to%20Cybersecurity-Cisco-green?logo=cisco&logoColor=white" alt="Badge officiel Cisco Introduction to Cybersecurity">
       </a>
       <div class="cert-title">Introduction to Cybersecurity</div>
       <div class="cert-date">mai 2025</div>
@@ -503,7 +584,7 @@
 
     <div class="cert-card">
       <a href="https://www.credly.com/badges/1ed75b4f-8e73-4e13-8dff-2ada28dee8f2" target="_blank" aria-label="Badge Python Essentials 1 - Cisco">
-        <img class="cert-badge" src="https://img.shields.io/badge/Python%20Essentials%201-Cisco-orange?logo=cisco&logoColor=white" alt="Badge Python Essentials 1 Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/Python%20Essentials%201-Cisco-orange?logo=cisco&logoColor=white" alt="Badge officiel Cisco Python Essentials 1">
       </a>
       <div class="cert-title">Python Essentials 1</div>
       <div class="cert-date">nov. 2025</div>
@@ -512,7 +593,7 @@
 
     <div class="cert-card">
       <a href="https://www.credly.com/badges/bdd64952-0f1f-4d28-b559-3595e902cf59" target="_blank" aria-label="Badge Linux Unhatched - Cisco">
-        <img class="cert-badge" src="https://img.shields.io/badge/Linux%20Unhatched-Cisco-purple?logo=cisco&logoColor=white" alt="Badge Linux Unhatched Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/Linux%20Unhatched-Cisco-purple?logo=cisco&logoColor=white" alt="Badge officiel Cisco Linux Unhatched">
       </a>
       <div class="cert-title">Linux Unhatched</div>
       <div class="cert-date">nov. 2025</div>
@@ -521,16 +602,16 @@
 
     <div class="cert-card">
       <a href="https://savanna.alxafrica.com/certificates/6YsNBFzJM2" target="_blank" aria-label="Certificat Professional Foundations - ALX">
-        <img class="cert-badge" src="https://img.shields.io/badge/Professional%20Foundations-ALX-lightblue?logo=alx&logoColor=black" alt="Certificat Professional Foundations ALX">
+        <img class="cert-badge" src="https://img.shields.io/badge/Professional%20Foundations-ALX-lightblue?logo=alx&logoColor=black" alt="Certificat Professional Foundations de ALX">
       </a>
       <div class="cert-title">Professional Foundations</div>
-      <div class="cert-date">mai 2025</div>
+      <div class="cert-date">août 2025</div>
       <a href="https://savanna.alxafrica.com/certificates/6YsNBFzJM2" target="_blank" class="cert-link">Afficher l’identifiant</a>
     </div>
 
     <div class="cert-card">
       <a href="https://www.linkedin.com/learning/certificates/ad9c767d7bf904587252c841f1bb036be4fc44ebc91857552e565756944850d6" target="_blank" aria-label="Certificat Découvrir l'IA générative - LinkedIn">
-        <img class="cert-badge" src="https://img.shields.io/badge/D%C3%A9couvrir%20l'IA%20g%C3%A9n%C3%A9rative-LinkedIn-blueviolet?logo=linkedin&logoColor=white" alt="Certificat Découvrir l'IA générative LinkedIn">
+        <img class="cert-badge" src="https://img.shields.io/badge/D%C3%A9couvrir%20l%27IA%20g%C3%A9n%C3%A9rative-LinkedIn-blueviolet?logo=linkedin&logoColor=white" alt="Certificat LinkedIn Learning : Découvrir l'IA générative">
       </a>
       <div class="cert-title">Découvrir l'IA générative</div>
       <div class="cert-date">sept. 2025</div>
@@ -539,7 +620,7 @@
 
     <div class="cert-card">
       <a href="https://www.linkedin.com/learning/certificates/7006be3a579376ec410e0dd2cbecaf2b6164b2bdf30e754f7e4ac21b8e7c7b42" target="_blank" aria-label="Certificat Les essentiels de Microsoft Azure AI - LinkedIn">
-        <img class="cert-badge" src="https://img.shields.io/badge/Les%20essentiels%20de%20Microsoft%20Azure%20AI-Microsoft-blue?logo=microsoftazure&logoColor=white" alt="Certificat Les essentiels de Microsoft Azure AI">
+        <img class="cert-badge" src="https://img.shields.io/badge/Les%20essentiels%20de%20Microsoft%20Azure%20AI-Microsoft-blue?logo=microsoftazure&logoColor=white" alt="Certificat LinkedIn Learning : Les essentiels de Microsoft Azure AI">
       </a>
       <div class="cert-title">Les essentiels de Microsoft Azure AI</div>
       <div class="cert-date">nov. 2025</div>
@@ -603,12 +684,12 @@
     <div class="card">
       <h3>Système & Infrastructure</h3>
       <div class="skills-icons">
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=windows" alt="Windows"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=linux" alt="Linux"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=ubuntu" alt="Ubuntu"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=redhat" alt="RedHat"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=debian" alt="Debian"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=bash" alt="Bash"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=windows" alt="Système d'exploitation Windows pour administration système"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=linux" alt="Système d'exploitation Linux pour serveurs et administration"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=ubuntu" alt="Distribution Ubuntu Linux"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=redhat" alt="Distribution Red Hat Enterprise Linux"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=debian" alt="Distribution Debian Linux"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=bash" alt="Langage de script Bash pour automatisation système"></div>
       </div>
       <p style="margin-top:15px;color:var(--muted)">
         Administration des environnements Windows Server,
@@ -620,10 +701,10 @@
     <div class="card">
       <h3>Virtualisation & Cloud</h3>
       <div class="skills-icons">
-        <div class="skill-icon"><img src="https://img.shields.io/badge/VMware-607078?style=for-the-badge&logo=vmware&logoColor=white" alt="VMware" style="width:40px;height:40px;"></div>
-        <div class="skill-icon"><img src="https://img.shields.io/badge/VirtualBox-183A61?style=for-the-badge&logo=virtualbox&logoColor=white" alt="VirtualBox" style="width:40px;height:40px;"></div>
-        <div class="skill-icon"><img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure" style="width:40px;height:40px;"></div>
-        <div class="skill-icon"><img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/VMware-607078?style=for-the-badge&logo=vmware&logoColor=white" alt="Plateforme de virtualisation VMware" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/VirtualBox-183A61?style=for-the-badge&logo=virtualbox&logoColor=white" alt="Logiciel de virtualisation Oracle VirtualBox" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Plateforme cloud Microsoft Azure" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="Plateforme cloud Amazon Web Services" style="width:40px;height:40px;"></div>
       </div>
       <p style="margin-top:15px;color:var(--muted)">
         Virtualisation des environnements serveurs et postes,
@@ -645,11 +726,11 @@
     <div class="card">
       <h3>Scripting & Automation</h3>
       <div class="skills-icons">
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=python" alt="Python"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=powershell" alt="PowerShell"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=javascript" alt="JavaScript"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=html" alt="HTML"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=css" alt="CSS"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=python" alt="Langage de programmation Python pour automatisation et scripts"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=powershell" alt="Langage PowerShell pour automatisation Windows"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=javascript" alt="Langage JavaScript pour développement web"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=html" alt="Langage HTML pour structure de pages web"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=css" alt="Langage CSS pour stylisation de pages web"></div>
       </div>
       <p style="margin-top:15px;color:var(--muted)">Python, PowerShell, Bash, JavaScript, HTML/CSS</p>
     </div>
@@ -657,10 +738,10 @@
     <div class="card">
       <h3>Outils</h3>
       <div class="skills-icons">
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=git" alt="Git"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=postman" alt="Postman"></div>
-        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=vscode" alt="VSCode"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=git" alt="Système de contrôle de version Git"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=github" alt="Plateforme de collaboration GitHub"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=postman" alt="Outil d'API Postman"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=vscode" alt="Éditeur de code Visual Studio Code"></div>
       </div>
       <p style="margin-top:15px;color:var(--muted)">Git, GitHub, Postman, VS Code</p>
     </div>
@@ -672,12 +753,12 @@
   <h2 class="section-title">Projets</h2>
   <div class="cards">
     <div class="project-card">
-      <img src="https://github.com/user-attachments/assets/b18bc254-2852-477f-a9b8-20026f540808" alt="Interface du Générateur de Mots de Passe web" class="project-image">
-      <h3 class="project-title">🔐 Générateur de Mots de Passe – Web</h3>
+      <img src="https://github.com/user-attachments/assets/b18bc254-2852-477f-a9b8-20026f540808" alt="Application web de génération de mots de passe sécurisés avec options de complexité" class="project-image">
+      <h3 class="project-title"> Générateur de <strong>Mots de Passe</strong> </h3>
       <p class="project-desc">
-        Application web permettant de générer des mots de passe sécurisés,
-        avec options personnalisables, stockage local et copie rapide.
-        Projet réalisé pour renforcer les bonnes pratiques de sécurité.
+        Application web permettant de générer des <strong>mots de passe sécurisés</strong>,
+        avec <strong>options personnalisables</strong>, <strong>stockage local</strong> et <strong>copie rapide</strong>.
+        Projet réalisé pour renforcer les <strong>bonnes pratiques de sécurité</strong>.
       </p>
       <div class="project-actions">
         <a href="https://salmael12.github.io/Password.Generator/" target="_blank" class="project-btn">Essayer</a>
@@ -686,11 +767,11 @@
     </div>
 
     <div class="project-card">
-      <img src="https://github.com/user-attachments/assets/bebb536f-8f1e-4138-b84b-6407a5cb7822" alt="Interface du Quiz Sécurité API" class="project-image">
-      <h3 class="project-title">🧠 Quiz Sécurité API – Pirate le Web Caché</h3>
+      <img src="https://github.com/user-attachments/assets/bebb536f-8f1e-4138-b84b-6407a5cb7822" alt="Interface interactive du quiz pédagogique sur les vulnérabilités des API et la sécurité web" class="project-image">
+      <h3 class="project-title"> Quiz <strong>Sécurité API</strong> – Pirate le Web Caché</h3>
       <p class="project-desc">
-        Quiz pédagogique visant à sensibiliser aux vulnérabilités des API
-        et aux bonnes pratiques de sécurité à travers des scénarios concrets.
+        Quiz pédagogique visant à sensibiliser aux <strong>vulnérabilités des API</strong>
+        et aux <strong>bonnes pratiques de sécurité</strong> à travers des <strong>scénarios concrets</strong>.
       </p>
       <div class="project-actions">
         <a href="https://salmael12.github.io/API-Hacking-Quiz-Web-Security-Project/" target="_blank" class="project-btn">Jouer</a>
@@ -698,32 +779,38 @@
       </div>
     </div>
 
-    <!-- ✅ PROJET WINDOWS SERVER AVEC IMAGE ET DESCRIPTION TECHNIQUE -->
     <div class="project-card">
-      <img src="https://help.tehama.io/hc/article_attachments/8806447995028/6-GPMC.png" alt="Interface GPMC - Gestion des stratégies de groupe (GPO) dans Active Directory" class="project-image">
-      <h3 class="project-title">🖥️ Infrastructure Windows Server</h3>
-  <div class="project-desc">
-  <span style="font-size:13px; color:var(--muted); display:block; margin-bottom:8px;">
-    Windows Server 2019 • Active Directory • GPO • PowerShell
-  </span>
-  Conception et administration d’une infrastructure Active Directory sous Windows Server 2019,
-  incluant la gestion des OU et des GPO, le contrôle de l’héritage, l’utilisation de filtres WMI
-  et l’automatisation de tâches système et de sécurité via PowerShell.
-</div>
-
+      <img src="https://github.com/user-attachments/assets/76b955d1-0a33-4130-bcd9-0c2e2c1e8462" 
+           alt="Capture d'écran de l'assistant Ajouter des rôles et fonctionnalités dans Windows Server 2019, montrant la sélection de la fonctionnalité Group Policy Management (GPO)" 
+           class="project-image">
+      <h3 class="project-title"> Infrastructure <strong>Windows Server</strong></h3>
+      <div class="project-desc">
+        <span style="font-size:13px; color:var(--muted); display:block; margin-bottom:8px;">
+          <strong>Windows Server 2019</strong> • <strong>Active Directory</strong> • <strong>GPO</strong> • <strong>PowerShell</strong>
+        </span>
+        Conception et administration d’une infrastructure <strong>Active Directory</strong> sous <strong>Windows Server 2019</strong>,
+        incluant la gestion des <strong>OU</strong> et des <strong>GPO</strong>, le contrôle de l’<strong>héritage</strong>, l’utilisation de <strong>filtres WMI</strong>
+        et l’automatisation de <strong>tâches système</strong> et de <strong>sécurité</strong> via <strong>PowerShell</strong>.
+      </div>
       <div class="project-actions">
         <a href="https://drive.google.com/file/d/1IsNt5B6iyQ35pPEesScGA47qYvmMSaxM/view?usp=sharing" target="_blank" class="project-btn">Voir le rapport</a>
       </div>
     </div>
 
-
-    <!-- 🌐 Simulation Réseau – Packet Tracer – SANS IMAGE -->
     <div class="project-card">
-      <h3 class="project-title">🌐 Simulation Réseau – Packet Tracer</h3>
+      <img src="https://github.com/user-attachments/assets/33c2673e-e4a6-4067-817f-9bd5683286a8" 
+           alt="Schéma de simulation réseau dans Cisco Packet Tracer avec routeurs, commutateurs, VLANs et tunnels GRE" 
+           class="project-image">
+      <h3 class="project-title"> Simulation <strong>Réseau</strong> – Packet Tracer</h3>
       <p class="project-desc">
-        Simulation complète d’un réseau d’entreprise avec VLANs, routage inter-VLAN,
-        services DHCP/DNS et redondance (HSRP).
+        Conception d’un <strong>réseau d’entreprise sécurisé</strong> et <strong>redondant</strong> avec <strong>VLANs</strong>, <strong>routage Inter-VLAN</strong>, 
+        <strong>EtherChannel</strong>, <strong>STP</strong>, <strong>HSRP</strong>, <strong>ACLs</strong> et <strong>tunnel GRE</strong>. Projet intégrant la <strong>haute disponibilité</strong>, la <strong>sécurité</strong> 
+        et la <strong>connectivité inter-sites</strong> en <strong>dual-stack IPv4/IPv6</strong>.
       </p>
+      <div class="project-actions">
+        <a href="Réseaux et Sécurité Informatique.pka" download class="project-btn" title="Télécharger pour ouvrir avec Cisco Packet Tracer">Télécharger .pka</a>
+        <span style="display:block; font-size:12px; color:var(--muted); margin-top:8px;"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -738,51 +825,114 @@
       CV et références disponibles sur demande.
     </p>
     <div class="contact-grid">
+
+      <!-- Email -->
       <div class="contact-item">
-        <div class="contact-icon">📧</div>
+        <div class="contact-icon" style="background:#D44638;">📧</div>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:salmaelfarouki399@gmail.com">salmaelfarouki399@gmail.com</a></div>
+          <div class="contact-value">
+            <a href="mailto:salmaelfarouki399@gmail.com">salmaelfarouki399@gmail.com</a>
+          </div>
         </div>
       </div>
+
+      <!-- LinkedIn -->
       <div class="contact-item">
-        <div class="contact-icon">🔗</div>
+        <div class="contact-icon" style="background:#0077B5;">🔗</div>
         <div>
           <div class="contact-label">LinkedIn</div>
-          <div class="contact-value"><a href="https://www.linkedin.com/in/salma-el-farouki-8679a8150/" target="_blank">Salma El Farouki</a></div>
+          <div class="contact-value">
+            <a href="https://www.linkedin.com/in/salma-el-farouki-8679a8150/" target="_blank">Salma El Farouki</a>
+          </div>
         </div>
       </div>
+
+      <!-- GitHub -->
       <div class="contact-item">
-        <div class="contact-icon">💻</div>
+        <div class="contact-icon" style="background:#333333;">💻</div>
         <div>
           <div class="contact-label">GitHub</div>
-          <div class="contact-value"><a href="https://github.com/salmael12" target="_blank">salmael12</a></div>
+          <div class="contact-value">
+            <a href="https://github.com/salmael12" target="_blank">salmael12</a>
+          </div>
         </div>
       </div>
+
+      <!-- Téléphone -->
       <div class="contact-item">
-        <div class="contact-icon">📱</div>
+        <div class="contact-icon" style="background:#25D366;">📱</div>
         <div>
           <div class="contact-label">Téléphone</div>
-          <div class="contact-value"><a href="tel:+212677261191">+212 677 261 191</a></div>
+          <div class="contact-value">
+            <a href="tel:+212677261191">+212 677 261 191</a>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <footer>
-  © 2025 Salma El Farouki – Infrastructure Digitale & Cybersécurité
+  <div>© 2025 Salma El Farouki – Infrastructure Digitale & Cybersécurité</div>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/salma-el-farouki-8679a8150/" class="social-link" target="_blank" aria-label="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    </a>
+    <a href="https://github.com/salmael12" class="social-link" target="_blank" aria-label="GitHub">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+    </a>
+  </div>
 </footer>
 
 <script>
-  // ✅ Script corrigé : passe bien de 🌙 à ☀️
+  // Theme toggle with localStorage
   function toggleTheme() {
     const body = document.body;
     const themeToggle = document.querySelector('.theme-toggle');
     body.classList.toggle('light-mode');
-    themeToggle.textContent = body.classList.contains('light-mode') ? '☀️' : '🌙';
+    const isLightMode = body.classList.contains('light-mode');
+    themeToggle.textContent = isLightMode ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
   }
+  
+  // Load saved theme preference and initialize animations
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load theme from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const themeToggle = document.querySelector('.theme-toggle');
+    
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+      themeToggle.textContent = '☀️';
+    } else {
+      themeToggle.textContent = '🌙';
+    }
+    
+    // Start hero animation
+    document.querySelector('.hero').style.animationPlayState = 'running';
+    
+    // Set up Intersection Observer for project cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
+  });
 </script>
 </body>
 </html>
 
+ 
