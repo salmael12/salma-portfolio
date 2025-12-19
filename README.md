@@ -53,8 +53,7 @@ Ce site présente mon parcours, mes compétences techniques, mes certifications 
 
 - 🖥️ **Infrastructure Windows Server (AD, GPO, PowerShell)**  
   Mise en place d’un domaine Active Directory avec gestion des GPO, OU et automatisation via PowerShell.  
-  <img width="786" height="560" alt="GPO" src="https://github.com/user-attachments/assets/ec423505-a23b-4dc6-8df8-b940df71ef5e" />
-
+<img width="1918" height="910" alt="gpo" src="https://github.com/user-attachments/assets/76b955d1-0a33-4130-bcd9-0c2e2c1e8462" />
 - 🌐 **Simulation Réseau (Packet Tracer)**  
   Projet de simulation de réseau complet avec VLAN, routage et protocoles HSRP/STP.  
   <img width="1024" height="1074" alt="image" src="https://github.com/user-attachments/assets/33c2673e-e4a6-4067-817f-9bd5683286a8" />
