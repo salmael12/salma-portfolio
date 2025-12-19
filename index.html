@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Technicienne en Infrastructure Digitale, Systèmes, Réseaux et Cybersécurité – Portfolio de Salma El Farouki">
+  <meta name="keywords" content="infrastructure digitale, cybersécurité, Windows Server, Active Directory, réseaux, GPO, PowerShell, Python, Cisco, certifiée">
+  <meta name="author" content="Salma El Farouki">
+  <title>Salma El Farouki | Infrastructure & Cybersécurité</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#e91e63;
+      --pink-dark:#ad1457;
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#e6ecff;
+      --muted:#a9b3d6;
+      --light-bg:#fdfafa;
+      --light-card:#ffffff;
+      --light-text:#212529;
+      --light-muted:#6c757d;
+    }
+    
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:var(--bg);color:var(--text);line-height:1.6;transition:all 0.3s ease}
+    body.light-mode{
+      background:var(--light-bg);
+      color:var(--light-text);
+    }
+    a{text-decoration:none;color:inherit}
+    header{position:fixed;top:0;left:0;width:100%;padding:20px 8%;background:rgba(11,18,32,.9);display:flex;justify-content:space-between;align-items:center;z-index:100;transition:all 0.3s ease}
+    body.light-mode header{
+      background:rgba(253,250,250,.9);
+      color:var(--light-text);
+    }
+    .logo{font-size:24px;font-weight:700;color:var(--pink)}
+    body.light-mode .logo{
+      color:var(--pink-dark);
+    }
+    nav a{margin-left:25px;color:var(--muted);font-weight:500;transition:color 0.3s ease}
+    body.light-mode nav a{
+      color:var(--light-muted);
+    }
+    nav a:hover{color:var(--pink)}
+    body.light-mode nav a:hover{
+      color:var(--pink-dark);
+    }
+    section{padding:100px 8%}
+    .hero{min-height:100vh;display:flex;align-items:center}
+    .hero h1{font-size:48px}
+    .hero h1 span{color:var(--pink)}
+    body.light-mode .hero h1 span{
+      color:var(--pink-dark);
+    }
+    .hero h2{margin:10px 0;color:var(--pink)}
+    body.light-mode .hero h2{
+      color:var(--pink-dark);
+    }
+    .hero p{max-width:650px;color:var(--muted)}
+    body.light-mode .hero p{
+      color:var(--light-muted);
+    }
+    .btn{display:inline-block;margin-top:20px;padding:12px 28px;border-radius:30px;background:var(--pink);color:#fff;font-weight:600;transition:background 0.3s ease}
+    .btn:hover{background:var(--pink-dark)}
+    body.light-mode .btn{
+      background:var(--pink-dark);
+    }
+    body.light-mode .btn:hover{
+      background:var(--pink);
+    }
+    h2.section-title{text-align:center;font-size:36px;margin-bottom:50px;transition:color 0.3s ease}
+    body.light-mode .section-title{
+      color:var(--light-text);
+    }
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+    .card{background:var(--card);padding:25px;border-radius:16px;transition:background 0.3s ease}
+    body.light-mode .card{
+      background:var(--light-card);
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+    }
+    .card h3{color:var(--pink);margin-bottom:10px;transition:color 0.3s ease}
+    body.light-mode .card h3{
+      color:var(--pink-dark);
+    }
+    ul{list-style:none}
+    ul li{margin-bottom:8px;color:var(--muted);transition:color 0.3s ease}
+    body.light-mode ul li{
+      color:var(--light-muted);
+    }
+    footer{text-align:center;padding:30px;color:var(--muted);background:#070d1a;transition:all 0.3s ease}
+    body.light-mode footer{
+      background:#f8f9fa;
+      color:var(--light-muted);
+    }
+    
+    /* Certifications */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    .cert-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    body.light-mode .cert-card{
+      background: var(--light-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(233,30,99,0.25);
+    }
+    
+    body.light-mode .cert-card:hover{
+      box-shadow: 0 8px 25px rgba(173,20,87,0.1);
+    }
+    
+    .cert-badge {
+      width: 100%;
+      height: auto;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    
+    .cert-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .cert-date {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    /* Cert link style */
+    .cert-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--pink);
+      text-decoration: underline;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    
+    .cert-link:hover {
+      color: var(--pink-dark);
+    }
+    
+    body.light-mode .cert-link {
+      color: var(--pink-dark);
+    }
+    
+    body.light-mode .cert-link:hover {
+      color: var(--pink);
+    }
+    
+    /* Theme Toggle */
+    .theme-toggle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #343a40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 20px;
+    }
+    
+    body.light-mode .theme-toggle{
+      background: #dee2e6;
+      color: #212529;
+    }
+    
+    .theme-toggle:hover{
+      transform: scale(1.1);
+    }
+    
+    /* Skills Icons */
+    .skills-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      margin-top: 15px;
+    }
+    
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(233,30,99,0.1);
+    }
+    
+    body.light-mode .skill-icon{
+      background: rgba(173,20,87,0.05);
+    }
+    
+    .skill-icon img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+    
+    /* Override pour les badges style=for-the-badge */
+    .skill-icon img[style] {
+      width: 40px !important;
+      height: 40px !important;
+    }
+    
+    .skill-icon:hover {
+      transform: scale(1.1);
+      background: rgba(233,30,99,0.2);
+    }
+    
+    body.light-mode .skill-icon:hover{
+      background: rgba(173,20,87,0.1);
+    }
+    
+    /* Project Cards */
+    .project-card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    body.light-mode .project-card{
+      background: var(--light-card);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(233,30,99,0.25);
+    }
+    
+    body.light-mode .project-card:hover{
+      box-shadow: 0 8px 25px rgba(173,20,87,0.1);
+    }
+    
+    .project-image {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    
+    .project-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+    
+    body.light-mode .project-title{
+      color:var(--pink-dark);
+    }
+    
+    .project-desc {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    
+    body.light-mode .project-desc{
+      color:var(--light-muted);
+    }
+    
+    .project-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .project-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--pink);
+      background: rgba(233,30,99,0.2);
+      transition: all 0.2s;
+    }
+    
+    .project-btn:hover {
+      background: rgba(233,30,99,0.3);
+      color: var(--pink-dark);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: var(--bg);
+      padding: 100px 8%;
+      text-align: center;
+    }
+    
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .contact-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    
+    .contact-intro, .contact-reference {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    
+    .contact-reference {
+      font-size: 14px;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      text-align: left;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      background: rgba(233,30,99,0.1);
+      transform: translateX(5px);
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    
+    .contact-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    
+    .contact-value {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    
+    .contact-value a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    
+    .contact-value a:hover {
+      color: var(--pink);
+      text-decoration: underline;
+    }
+    
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .action-buttons .btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-container {
+        padding: 2rem;
+      }
+      
+      .skills-icons {
+        justify-content: center;
+      }
+      
+      .project-actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Salma<span>.</span></div>
+  <nav>
+    <a href="#about">À propos</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#education">Formation</a>
+    <a href="#experience">Expérience</a>
+    <a href="#skills">Compétences</a>
+    <a href="#projects">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+</header>
+
+<section class="hero" id="about">
+  <div>
+    <h1>Bonjour, je suis <span>Salma El Farouki</span></h1>
+    <h2>
+      Technicienne en Infrastructure Digitale & Réseaux  
+      <span style="font-size:16px;display:block;color:var(--muted);margin-top:8px;">
+        Junior en Cybersécurité
+      </span>
+    </h2>
+    <p>
+      Spécialisée en systèmes et réseaux, je possède une solide base en
+      administration Windows Server, Active Directory, DNS/DHCP et réseaux informatiques.
+      Passionnée par la cybersécurité, je m’intéresse à l’automatisation,
+      à la sécurisation des infrastructures et aux bonnes pratiques IT.
+      Je recherche une opportunité pour continuer à développer mes compétences
+      et évoluer vers les métiers des réseaux et de la cybersécurité.
+    </p>
+    <div class="action-buttons">
+      <a class="btn" href="https://drive.google.com/file/d/11zLMUAjxxJxN7Ahzj6W-O5ILDRHPSegq/view" target="_blank">Voir mon CV</a>
+      <a class="btn" href="#contact">Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2 class="section-title">Certifications</h2>
+  <div class="certifications-grid">
+    <div class="cert-card">
+      <a href="https://www.credly.com/badges/010db3ff-b66f-490a-90f6-52b0dd6c163f" target="_blank" aria-label="Badge CyberOps Associate - Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/CyberOps%20Associate-Cisco-blue?logo=cisco&logoColor=white" alt="Badge CyberOps Associate Cisco">
+      </a>
+      <div class="cert-title">CyberOps Associate</div>
+      <div class="cert-date">nov. 2025</div>
+      <a href="https://www.credly.com/badges/010db3ff-b66f-490a-90f6-52b0dd6c163f" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.credly.com/badges/b3a08004-18b8-4c4d-a4a0-f64f22bb2106" target="_blank" aria-label="Badge DevNet Associate - Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/DevNet%20Associate-Cisco-red?logo=cisco&logoColor=white" alt="Badge DevNet Associate Cisco">
+      </a>
+      <div class="cert-title">DevNet Associate</div>
+      <div class="cert-date">nov. 2025</div>
+      <a href="https://www.credly.com/badges/b3a08004-18b8-4c4d-a4a0-f64f22bb2106" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.credly.com/badges/4667c5b5-7cca-42c4-8b4b-9f24372d5079" target="_blank" aria-label="Badge CCNA Introduction to Networks - Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/CCNA%3A%20Intro%20to%20Networks-Cisco-yellow?logo=cisco&logoColor=black" alt="Badge CCNA Introduction to Networks Cisco">
+      </a>
+      <div class="cert-title">CCNA: Introduction to Networks</div>
+      <div class="cert-date">sept. 2025</div>
+      <a href="https://www.credly.com/badges/4667c5b5-7cca-42c4-8b4b-9f24372d5079" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.credly.com/badges/ea1cfceb-797a-4db5-ba79-675abce21fdf" target="_blank" aria-label="Badge Introduction to Cybersecurity - Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/Introduction%20to%20Cybersecurity-Cisco-green?logo=cisco&logoColor=white" alt="Badge Introduction to Cybersecurity Cisco">
+      </a>
+      <div class="cert-title">Introduction to Cybersecurity</div>
+      <div class="cert-date">mai 2025</div>
+      <a href="https://www.credly.com/badges/ea1cfceb-797a-4db5-ba79-675abce21fdf" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.credly.com/badges/1ed75b4f-8e73-4e13-8dff-2ada28dee8f2" target="_blank" aria-label="Badge Python Essentials 1 - Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/Python%20Essentials%201-Cisco-orange?logo=cisco&logoColor=white" alt="Badge Python Essentials 1 Cisco">
+      </a>
+      <div class="cert-title">Python Essentials 1</div>
+      <div class="cert-date">nov. 2025</div>
+      <a href="https://www.credly.com/badges/1ed75b4f-8e73-4e13-8dff-2ada28dee8f2" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.credly.com/badges/bdd64952-0f1f-4d28-b559-3595e902cf59" target="_blank" aria-label="Badge Linux Unhatched - Cisco">
+        <img class="cert-badge" src="https://img.shields.io/badge/Linux%20Unhatched-Cisco-purple?logo=cisco&logoColor=white" alt="Badge Linux Unhatched Cisco">
+      </a>
+      <div class="cert-title">Linux Unhatched</div>
+      <div class="cert-date">nov. 2025</div>
+      <a href="https://www.credly.com/badges/bdd64952-0f1f-4d28-b559-3595e902cf59" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://savanna.alxafrica.com/certificates/6YsNBFzJM2" target="_blank" aria-label="Certificat Professional Foundations - ALX">
+        <img class="cert-badge" src="https://img.shields.io/badge/Professional%20Foundations-ALX-lightblue?logo=alx&logoColor=black" alt="Certificat Professional Foundations ALX">
+      </a>
+      <div class="cert-title">Professional Foundations</div>
+      <div class="cert-date">mai 2025</div>
+      <a href="https://savanna.alxafrica.com/certificates/6YsNBFzJM2" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.linkedin.com/learning/certificates/ad9c767d7bf904587252c841f1bb036be4fc44ebc91857552e565756944850d6" target="_blank" aria-label="Certificat Découvrir l'IA générative - LinkedIn">
+        <img class="cert-badge" src="https://img.shields.io/badge/D%C3%A9couvrir%20l'IA%20g%C3%A9n%C3%A9rative-LinkedIn-blueviolet?logo=linkedin&logoColor=white" alt="Certificat Découvrir l'IA générative LinkedIn">
+      </a>
+      <div class="cert-title">Découvrir l'IA générative</div>
+      <div class="cert-date">sept. 2025</div>
+      <a href="https://www.linkedin.com/learning/certificates/ad9c767d7bf904587252c841f1bb036be4fc44ebc91857552e565756944850d6" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+
+    <div class="cert-card">
+      <a href="https://www.linkedin.com/learning/certificates/7006be3a579376ec410e0dd2cbecaf2b6164b2bdf30e754f7e4ac21b8e7c7b42" target="_blank" aria-label="Certificat Les essentiels de Microsoft Azure AI - LinkedIn">
+        <img class="cert-badge" src="https://img.shields.io/badge/Les%20essentiels%20de%20Microsoft%20Azure%20AI-Microsoft-blue?logo=microsoftazure&logoColor=white" alt="Certificat Les essentiels de Microsoft Azure AI">
+      </a>
+      <div class="cert-title">Les essentiels de Microsoft Azure AI</div>
+      <div class="cert-date">nov. 2025</div>
+      <a href="https://www.linkedin.com/learning/certificates/7006be3a579376ec410e0dd2cbecaf2b6164b2bdf30e754f7e4ac21b8e7c7b42" target="_blank" class="cert-link">Afficher l’identifiant</a>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2 class="section-title">Formation</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Technicien Spécialisé en Infrastructure Digitale</h3>
+      <p style="color:var(--muted)">Option Systèmes et Réseaux</p>
+      <p>
+        Formation orientée administration des systèmes, réseaux et sécurité :
+        Windows Server, Active Directory, DNS/DHCP, virtualisation et bases de la cybersécurité.
+      </p>
+      <p style="margin-top:10px;font-size:14px">2023 – 2025 | OFPPT, Fès</p>
+    </div>
+    <div class="card">
+      <h3>Baccalauréat en Sciences Physiques</h3>
+      <p style="color:var(--muted)">Option BIOF</p>
+      <p style="margin-top:10px;font-size:14px">2022 – 2023 | Lycée Ibn Hanie, Fès</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2 class="section-title">Expérience Professionnelle</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Stage PFE – Commune de Fès</h3>
+      <ul>
+        <li>Administration des comptes utilisateurs et groupes via Active Directory</li>
+        <li>Configuration et gestion des adresses IP fixes</li>
+        <li>Installation et maintenance de postes Windows 11 et serveurs Windows Server</li>
+        <li>Sécurisation basique du réseau (routeur, Wi-Fi)</li>
+        <li>Support technique aux utilisateurs (réseau, imprimantes, postes)</li>
+        <li>Participation à l’amélioration de la disponibilité et de la sécurité de l’infrastructure locale</li>
+      </ul>
+      <p style="margin-top:10px;font-size:14px">Mars – Mars 2025</p>
+    </div>
+    <div class="card">
+      <h3>Ambassadrice OFPPT</h3>
+      <ul>
+        <li>Accompagnement et orientation des candidats dans leurs choix de filières</li>
+        <li>Explication des démarches pour créer un compte OFPPT et s’inscrire en ligne</li>
+        <li>Présentation des différentes filières de formation proposées par l’OFPPT</li>
+        <li>Conseil personnalisé pour aider les candidats à définir leurs parcours professionnels</li>
+      </ul>
+      <p style="margin-top:10px;font-size:14px">Mai 2024 – Juin 2025</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">Compétences</h2>
+  <div class="cards">
+    
+    <div class="card">
+      <h3>Système & Infrastructure</h3>
+      <div class="skills-icons">
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=windows" alt="Windows"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=linux" alt="Linux"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=ubuntu" alt="Ubuntu"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=redhat" alt="RedHat"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=debian" alt="Debian"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=bash" alt="Bash"></div>
+      </div>
+      <p style="margin-top:15px;color:var(--muted)">
+        Administration des environnements Windows Server,
+        gestion Active Directory, services réseau (DNS, DHCP),
+        sécurisation et maintenance des systèmes.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Virtualisation & Cloud</h3>
+      <div class="skills-icons">
+        <div class="skill-icon"><img src="https://img.shields.io/badge/VMware-607078?style=for-the-badge&logo=vmware&logoColor=white" alt="VMware" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/VirtualBox-183A61?style=for-the-badge&logo=virtualbox&logoColor=white" alt="VirtualBox" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure" style="width:40px;height:40px;"></div>
+        <div class="skill-icon"><img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" style="width:40px;height:40px;"></div>
+      </div>
+      <p style="margin-top:15px;color:var(--muted)">
+        Virtualisation des environnements serveurs et postes,
+        initiation aux services Cloud (Azure, AWS).
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Réseau</h3>
+      <ul style="margin-top: 10px; font-size: 0.95rem;">
+        <li><strong>Réseaux d’entreprise :</strong> VLANs, Trunking, Routage inter-VLAN</li>
+        <li><strong>Protocoles :</strong> RIP, OSPF, HSRP, VRRP, STP</li>
+        <li><strong>Services :</strong> DHCP, DNS, EtherChannel</li>
+        <li><strong>Outils :</strong> Cisco IOS, Packet Tracer, GNS3</li>
+        <li><strong>Dépannage :</strong> ping, traceroute, show commands</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Scripting & Automation</h3>
+      <div class="skills-icons">
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=python" alt="Python"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=powershell" alt="PowerShell"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=javascript" alt="JavaScript"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=html" alt="HTML"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=css" alt="CSS"></div>
+      </div>
+      <p style="margin-top:15px;color:var(--muted)">Python, PowerShell, Bash, JavaScript, HTML/CSS</p>
+    </div>
+
+    <div class="card">
+      <h3>Outils</h3>
+      <div class="skills-icons">
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=git" alt="Git"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=postman" alt="Postman"></div>
+        <div class="skill-icon"><img src="https://skillicons.dev/icons?i=vscode" alt="VSCode"></div>
+      </div>
+      <p style="margin-top:15px;color:var(--muted)">Git, GitHub, Postman, VS Code</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projets</h2>
+  <div class="cards">
+    <div class="project-card">
+      <img src="https://github.com/user-attachments/assets/b18bc254-2852-477f-a9b8-20026f540808" alt="Interface du Générateur de Mots de Passe web" class="project-image">
+      <h3 class="project-title">🔐 Générateur de Mots de Passe – Web</h3>
+      <p class="project-desc">
+        Application web permettant de générer des mots de passe sécurisés,
+        avec options personnalisables, stockage local et copie rapide.
+        Projet réalisé pour renforcer les bonnes pratiques de sécurité.
+      </p>
+      <div class="project-actions">
+        <a href="https://salmael12.github.io/Password.Generator/" target="_blank" class="project-btn">Essayer</a>
+        <a href="https://github.com/salmael12/Password.Generator" target="_blank" class="project-btn">Code source</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://github.com/user-attachments/assets/bebb536f-8f1e-4138-b84b-6407a5cb7822" alt="Interface du Quiz Sécurité API" class="project-image">
+      <h3 class="project-title">🧠 Quiz Sécurité API – Pirate le Web Caché</h3>
+      <p class="project-desc">
+        Quiz pédagogique visant à sensibiliser aux vulnérabilités des API
+        et aux bonnes pratiques de sécurité à travers des scénarios concrets.
+      </p>
+      <div class="project-actions">
+        <a href="https://salmael12.github.io/API-Hacking-Quiz-Web-Security-Project/" target="_blank" class="project-btn">Jouer</a>
+        <a href="https://github.com/salmael12/API-Hacking-Quiz-Web-Security-Project" target="_blank" class="project-btn">Code source</a>
+      </div>
+    </div>
+
+    <!-- ✅ PROJET WINDOWS SERVER AVEC IMAGE ET DESCRIPTION TECHNIQUE -->
+    <div class="project-card">
+      <img src="https://help.tehama.io/hc/article_attachments/8806447995028/6-GPMC.png" alt="Interface GPMC - Gestion des stratégies de groupe (GPO) dans Active Directory" class="project-image">
+      <h3 class="project-title">🖥️ Infrastructure Windows Server</h3>
+  <div class="project-desc">
+  <span style="font-size:13px; color:var(--muted); display:block; margin-bottom:8px;">
+    Windows Server 2019 • Active Directory • GPO • PowerShell
+  </span>
+  Conception et administration d’une infrastructure Active Directory sous Windows Server 2019,
+  incluant la gestion des OU et des GPO, le contrôle de l’héritage, l’utilisation de filtres WMI
+  et l’automatisation de tâches système et de sécurité via PowerShell.
+</div>
+
+      <div class="project-actions">
+        <a href="https://drive.google.com/file/d/1IsNt5B6iyQ35pPEesScGA47qYvmMSaxM/view?usp=sharing" target="_blank" class="project-btn">Voir le rapport</a>
+      </div>
+    </div>
+
+
+    <!-- 🌐 Simulation Réseau – Packet Tracer – SANS IMAGE -->
+    <div class="project-card">
+      <h3 class="project-title">🌐 Simulation Réseau – Packet Tracer</h3>
+      <p class="project-desc">
+        Simulation complète d’un réseau d’entreprise avec VLANs, routage inter-VLAN,
+        services DHCP/DNS et redondance (HSRP).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2 class="contact-title">Contactez-moi</h2>
+    <p class="contact-intro">
+      Disponible pour opportunités junior, stage ou première expérience professionnelle.
+    </p>
+    <p class="contact-reference">
+      CV et références disponibles sur demande.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:salmaelfarouki399@gmail.com">salmaelfarouki399@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🔗</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value"><a href="https://www.linkedin.com/in/salma-el-farouki-8679a8150/" target="_blank">Salma El Farouki</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💻</div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value"><a href="https://github.com/salmael12" target="_blank">salmael12</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">Téléphone</div>
+          <div class="contact-value"><a href="tel:+212677261191">+212 677 261 191</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Salma El Farouki – Infrastructure Digitale & Cybersécurité
+</footer>
+
+<script>
+  // ✅ Script corrigé : passe bien de 🌙 à ☀️
+  function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.querySelector('.theme-toggle');
+    body.classList.toggle('light-mode');
+    themeToggle.textContent = body.classList.contains('light-mode') ? '☀️' : '🌙';
+  }
+</script>
+</body>
+</html>
+
