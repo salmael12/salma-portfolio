@@ -15,30 +15,22 @@ Ce site présente mon parcours, mes compétences techniques, mes certifications 
 ## 👩‍💻 Profil
 - Administration **Windows Server 2019**
 - **Active Directory**, DNS, DHCP
-- Réseaux d’entreprise : VLAN, Routage, HSRP, STP
+- Réseaux d’entreprise : **VLAN, Routage, HSRP, STP**
 - Initiation à la **Cybersécurité**
-- Scripting & automatisation : PowerShell, Python
+- Scripting & automatisation : **PowerShell, Python**
 
 ---
 
 ## 📜 Certifications
 - Cisco **CyberOps Associate**
 - Cisco **DevNet Associate**
-- CCNA: Introduction to Networks
-- Introduction to Cybersecurity – Cisco
-- Python Essentials 1 – Cisco
-- Linux Unhatched – Cisco
-- Professional Foundations – ALX
-- Découvrir l’IA générative – LinkedIn Learning
-- Microsoft Azure AI Essentials
-
----
-
-## 🛠️ Technologies utilisées
-- **Frontend :** HTML5, CSS3, JavaScript
-- **Systèmes :** Windows Server, Linux
-- **Réseaux :** Cisco IOS, Packet Tracer
-- **Outils :** Git, GitHub, VS Code
+- **CCNA: Introduction to Networks**
+- **Introduction to Cybersecurity** – Cisco
+- **Python Essentials 1** – Cisco
+- **Linux Unhatched** – Cisco
+- **Professional Foundations** – ALX
+- **Découvrir l’IA générative** – LinkedIn Learning
+- **Microsoft Azure AI Essentials**
 
 ---
 
